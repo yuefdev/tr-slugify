@@ -24,8 +24,10 @@
     "index.d.mts"
   ],
   "scripts": {
-    "test": "node --test"
+    "test": "node --test",
+    "prepublishOnly": "npm test"
   },
+  "sideEffects": false,
   "keywords": [
     "slug",
     "slugify",
