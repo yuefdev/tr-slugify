@@ -1,14 +1,33 @@
 'use strict';
 
-const DOTLESS_I = /ı/g;
+// Letters that NFKD leaves untouched, so they need an explicit mapping.
+const UNDECOMPOSABLE = {
+  ı: 'i',
+  ß: 'ss',
+  æ: 'ae',
+  Æ: 'AE',
+  œ: 'oe',
+  Œ: 'OE',
+  ø: 'o',
+  Ø: 'O',
+  đ: 'd',
+  Đ: 'D',
+  ð: 'd',
+  Ð: 'D',
+  ł: 'l',
+  Ł: 'L',
+  þ: 'th',
+  Þ: 'TH',
+};
+const UNDECOMPOSABLE_RE = new RegExp(`[${Object.keys(UNDECOMPOSABLE).join('')}]`, 'g');
 const COMBINING_MARKS = /[\u0300-\u036f]/g;
 const NON_ALPHANUMERIC = /[^A-Za-z0-9]+/;
 
 /**
  * Turns Turkish (or any Latin-script) text into a URL-safe slug.
  *
- * NFKD strips most diacritics (ç, ğ, ö, ş, ü, İ), but the dotless ı has no
- * decomposition, so it is mapped by hand first.
+ * NFKD strips most diacritics (ç, ğ, ö, ş, ü, İ), but a few letters such as
+ * the dotless ı, ß and ø have no decomposition, so they are mapped by hand first.
  */
 function slugify(
   input,
@@ -38,7 +57,7 @@ function slugify(
   }
 
   text = text
-    .replace(DOTLESS_I, 'i')
+    .replace(UNDECOMPOSABLE_RE, (ch) => UNDECOMPOSABLE[ch])
     .normalize('NFKD')
     .replace(COMBINING_MARKS, '');
 
