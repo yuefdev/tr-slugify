@@ -25,6 +25,8 @@ Most slugify libraries get `ı` and `İ` wrong: `ı` has no Unicode decompositio
 | `maxLength`    | `Infinity` | Maximum length; cuts at a word boundary where possible.  |
 | `replacements` | `{}`       | Substrings to swap before slugifying, e.g. `{ '&': 've' }`. |
 
+TypeScript types are included; the options type is exported as `SlugifyOptions`.
+
 ## Development
 
 ```bash
