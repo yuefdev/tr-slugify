@@ -25,6 +25,23 @@ test('keeps the original case when lowercase is false', () => {
   assert.equal(slugify('İSTANBUL', { lowercase: false }), 'ISTANBUL');
 });
 
+test('truncates at a word boundary with maxLength', () => {
+  const title = 'Çalışkan Öğrenci Şükrü';
+  assert.equal(slugify(title, { maxLength: 16 }), 'caliskan-ogrenci');
+  assert.equal(slugify(title, { maxLength: 15 }), 'caliskan');
+  assert.equal(slugify(title, { maxLength: 100 }), 'caliskan-ogrenci-sukru');
+});
+
+test('cuts a single long word when it exceeds maxLength', () => {
+  assert.equal(slugify('Muvaffakiyetsizleştiricileştiriveremeyebileceklerimizdenmişsinizcesine', { maxLength: 8 }), 'muvaffak');
+});
+
+test('rejects an invalid maxLength', () => {
+  assert.throws(() => slugify('Merhaba', { maxLength: 0 }), RangeError);
+  assert.throws(() => slugify('Merhaba', { maxLength: 2.5 }), RangeError);
+  assert.throws(() => slugify('Merhaba', { maxLength: '10' }), RangeError);
+});
+
 test('returns an empty string when nothing is left', () => {
   assert.equal(slugify('!!!'), '');
 });
