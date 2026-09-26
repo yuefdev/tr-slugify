@@ -12,6 +12,11 @@ test('handles dotted and dotless capital I', () => {
   assert.equal(slugify('İstanbul IĞDIR'), 'istanbul-igdir');
 });
 
+test('maps Latin letters that have no Unicode decomposition', () => {
+  assert.equal(slugify('Straße Łódź Øresund'), 'strasse-lodz-oresund');
+  assert.equal(slugify('Æsir Þórr Œuvre', { lowercase: false }), 'AEsir-THorr-OEuvre');
+});
+
 test('drops punctuation and trims separators', () => {
   assert.equal(slugify("  --İstanbul'da güneşli gün!--  "), 'istanbul-da-gunesli-gun');
 });
