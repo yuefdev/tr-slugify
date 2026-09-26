@@ -25,6 +25,14 @@ Most slugify libraries get `ı` and `İ` wrong: `ı` has no Unicode decompositio
 | `maxLength`    | `Infinity` | Maximum length; cuts at a word boundary where possible.  |
 | `replacements` | `{}`       | Substrings to swap before slugifying, e.g. `{ '&': 've' }`. |
 
+Works with both `require` and `import`:
+
+```js
+import slugify from 'tr-slugify';
+// or
+import { slugify } from 'tr-slugify';
+```
+
 TypeScript types are included; the options type is exported as `SlugifyOptions`.
 
 ## Development
