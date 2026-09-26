@@ -42,6 +42,17 @@ test('rejects an invalid maxLength', () => {
   assert.throws(() => slugify('Merhaba', { maxLength: '10' }), RangeError);
 });
 
+test('applies custom replacements before slugifying', () => {
+  assert.equal(slugify('Kedi & Köpek', { replacements: { '&': 've' } }), 'kedi-ve-kopek');
+  assert.equal(slugify('%50 indirim', { replacements: { '%': 'yuzde ' } }), 'yuzde-50-indirim');
+});
+
+test('rejects invalid replacements', () => {
+  assert.throws(() => slugify('a', { replacements: null }), TypeError);
+  assert.throws(() => slugify('a', { replacements: ['&'] }), TypeError);
+  assert.throws(() => slugify('a', { replacements: { '&': 1 } }), TypeError);
+});
+
 test('returns an empty string when nothing is left', () => {
   assert.equal(slugify('!!!'), '');
 });

@@ -10,7 +10,10 @@ const NON_ALPHANUMERIC = /[^A-Za-z0-9]+/;
  * NFKD strips most diacritics (ç, ğ, ö, ş, ü, İ), but the dotless ı has no
  * decomposition, so it is mapped by hand first.
  */
-function slugify(input, { separator = '-', lowercase = true, maxLength = Infinity } = {}) {
+function slugify(
+  input,
+  { separator = '-', lowercase = true, maxLength = Infinity, replacements = {} } = {},
+) {
   if (typeof input !== 'string') {
     throw new TypeError('slugify expects a string');
   }
@@ -20,8 +23,21 @@ function slugify(input, { separator = '-', lowercase = true, maxLength = Infinit
   if (maxLength !== Infinity && !(Number.isInteger(maxLength) && maxLength > 0)) {
     throw new RangeError('maxLength must be a positive integer');
   }
+  if (replacements === null || typeof replacements !== 'object' || Array.isArray(replacements)) {
+    throw new TypeError('replacements must be an object');
+  }
 
-  let text = input
+  let text = input;
+  for (const [from, to] of Object.entries(replacements)) {
+    if (typeof to !== 'string') {
+      throw new TypeError(`replacement for "${from}" must be a string`);
+    }
+    if (from) {
+      text = text.split(from).join(to);
+    }
+  }
+
+  text = text
     .replace(DOTLESS_I, 'i')
     .normalize('NFKD')
     .replace(COMBINING_MARKS, '');

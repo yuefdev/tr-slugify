@@ -5,9 +5,10 @@ Tiny, zero-dependency slugify for Turkish text.
 ```js
 const slugify = require('tr-slugify');
 
-slugify('Çalışkan Öğrenci Şükrü');                   // 'caliskan-ogrenci-sukru'
-slugify("İstanbul'da güneşli gün!");                 // 'istanbul-da-gunesli-gun'
-slugify('Merhaba Dünya', { separator: '_' });       // 'merhaba_dunya'
+slugify('Çalışkan Öğrenci Şükrü');                        // 'caliskan-ogrenci-sukru'
+slugify("İstanbul'da güneşli gün!");                      // 'istanbul-da-gunesli-gun'
+slugify('Merhaba Dünya', { separator: '_' });             // 'merhaba_dunya'
+slugify('Kedi & Köpek', { replacements: { '&': 've' } }); // 'kedi-ve-kopek'
 ```
 
 ## Why
@@ -17,11 +18,12 @@ Most slugify libraries get `ı` and `İ` wrong: `ı` has no Unicode decompositio
 
 ## Options
 
-| Option      | Default | Description                        |
-| ----------- | ------- | ---------------------------------- |
-| `separator` | `'-'`   | String placed between words.       |
-| `lowercase` | `true`  | Lower-case the result.             |
-| `maxLength` | `Infinity` | Maximum length; cuts at a word boundary where possible. |
+| Option         | Default    | Description                                              |
+| -------------- | ---------- | -------------------------------------------------------- |
+| `separator`    | `'-'`      | String placed between words.                             |
+| `lowercase`    | `true`     | Lower-case the result.                                   |
+| `maxLength`    | `Infinity` | Maximum length; cuts at a word boundary where possible.  |
+| `replacements` | `{}`       | Substrings to swap before slugifying, e.g. `{ '&': 've' }`. |
 
 ## Development
 
