@@ -41,7 +41,7 @@ TypeScript types are included; the options type is exported as `SlugifyOptions`.
 npm test
 ```
 
-Requires Node.js 18 or later.
+Requires Node.js 18 or later. See [CONTRIBUTING.md](CONTRIBUTING.md) before opening a pull request.
 
 ## Licence
 
