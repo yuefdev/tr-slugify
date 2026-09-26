@@ -20,6 +20,7 @@ Most slugify libraries get `ı` and `İ` wrong: `ı` has no Unicode decompositio
 | Option      | Default | Description                        |
 | ----------- | ------- | ---------------------------------- |
 | `separator` | `'-'`   | String placed between words.       |
+| `lowercase` | `true`  | Lower-case the result.             |
 
 ## Development
 
