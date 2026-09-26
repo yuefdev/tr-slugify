@@ -17,6 +17,7 @@ All notable changes to this project are documented here. The format follows
 
 ### Changed
 
+- Published on npm as `turkce-slugify`, since `tr-slugify` is already taken.
 - Invalid options now throw: a non-string `separator` or non-object
   `replacements` throws a `TypeError`, and an invalid `maxLength` throws a
   `RangeError`.

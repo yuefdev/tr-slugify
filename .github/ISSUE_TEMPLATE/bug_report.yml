@@ -29,5 +29,5 @@ body:
   - type: input
     id: version
     attributes:
-      label: tr-slugify and Node.js versions
-      placeholder: "tr-slugify 0.2.0, Node.js 22.11.0"
+      label: turkce-slugify and Node.js versions
+      placeholder: "turkce-slugify 0.2.0, Node.js 22.11.0"
