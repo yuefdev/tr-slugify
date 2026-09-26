@@ -1,9 +1,13 @@
-# tr-slugify
+# turkce-slugify
 
 Tiny, zero-dependency slugify for Turkish text.
 
+```bash
+npm install turkce-slugify
+```
+
 ```js
-const slugify = require('tr-slugify');
+const slugify = require('turkce-slugify');
 
 slugify('Çalışkan Öğrenci Şükrü');                        // 'caliskan-ogrenci-sukru'
 slugify("İstanbul'da güneşli gün!");                      // 'istanbul-da-gunesli-gun'
@@ -28,9 +32,9 @@ Most slugify libraries get `ı` and `İ` wrong: `ı` has no Unicode decompositio
 Works with both `require` and `import`:
 
 ```js
-import slugify from 'tr-slugify';
+import slugify from 'turkce-slugify';
 // or
-import { slugify } from 'tr-slugify';
+import { slugify } from 'turkce-slugify';
 ```
 
 TypeScript types are included; the options type is exported as `SlugifyOptions`.
