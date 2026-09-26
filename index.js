@@ -1,7 +1,7 @@
 'use strict';
 
 const DOTLESS_I = /ı/g;
-const COMBINING_MARKS = /[̀-ͯ]/g;
+const COMBINING_MARKS = /[\u0300-\u036f]/g;
 const NON_ALPHANUMERIC = /[^A-Za-z0-9]+/;
 
 /**
