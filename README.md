@@ -21,6 +21,7 @@ Most slugify libraries get `ı` and `İ` wrong: `ı` has no Unicode decompositio
 | ----------- | ------- | ---------------------------------- |
 | `separator` | `'-'`   | String placed between words.       |
 | `lowercase` | `true`  | Lower-case the result.             |
+| `maxLength` | `Infinity` | Maximum length; cuts at a word boundary where possible. |
 
 ## Development
 
