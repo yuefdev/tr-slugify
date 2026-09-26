@@ -14,6 +14,9 @@ function slugify(input, { separator = '-' } = {}) {
   if (typeof input !== 'string') {
     throw new TypeError('slugify expects a string');
   }
+  if (typeof separator !== 'string') {
+    throw new TypeError('separator must be a string');
+  }
 
   return input
     .replace(DOTLESS_I, 'i')

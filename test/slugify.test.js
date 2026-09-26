@@ -27,3 +27,8 @@ test('returns an empty string when nothing is left', () => {
 test('rejects non-string input', () => {
   assert.throws(() => slugify(42), TypeError);
 });
+
+test('rejects a non-string separator', () => {
+  assert.throws(() => slugify('Merhaba', { separator: null }), TypeError);
+  assert.throws(() => slugify('Merhaba', { separator: 1 }), TypeError);
+});
