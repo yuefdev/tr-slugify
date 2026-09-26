@@ -20,6 +20,11 @@ test('supports a custom separator', () => {
   assert.equal(slugify('Merhaba Dünya', { separator: '_' }), 'merhaba_dunya');
 });
 
+test('keeps the original case when lowercase is false', () => {
+  assert.equal(slugify('Çalışkan Öğrenci', { lowercase: false }), 'Caliskan-Ogrenci');
+  assert.equal(slugify('İSTANBUL', { lowercase: false }), 'ISTANBUL');
+});
+
 test('returns an empty string when nothing is left', () => {
   assert.equal(slugify('!!!'), '');
 });
