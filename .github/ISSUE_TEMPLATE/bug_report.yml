@@ -1,0 +1,33 @@
+name: Bug report
+description: A slug came out wrong or slugify threw unexpectedly.
+labels: [bug]
+body:
+  - type: input
+    id: input
+    attributes:
+      label: Input string
+      placeholder: "Çalışkan Öğrenci"
+    validations:
+      required: true
+  - type: input
+    id: options
+    attributes:
+      label: Options passed
+      placeholder: "{ separator: '_' }"
+  - type: input
+    id: actual
+    attributes:
+      label: Actual slug
+    validations:
+      required: true
+  - type: input
+    id: expected
+    attributes:
+      label: Expected slug
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: tr-slugify and Node.js versions
+      placeholder: "tr-slugify 0.2.0, Node.js 22.11.0"
